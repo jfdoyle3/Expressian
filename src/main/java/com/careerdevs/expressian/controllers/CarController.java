@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
@@ -24,10 +25,10 @@ public class CarController {
         return repository.findAll();
     }
 
-    @GetMapping("/Type/{Type}")
-    public ResponseEntity<List<Car>> getCarsByType(@PathVariable String model) {
-        return new ResponseEntity<>(repository.findAllByModel(model, Sort.by("name")), HttpStatus.OK);
-    }
+//    @GetMapping("/Type/{Type}")
+//    public ResponseEntity<List<Car>> getCarsByType(@PathVariable String model) {
+//        return new ResponseEntity<>(repository.findAllByModel(model, Sort.by("name")), HttpStatus.OK);
+//    }
 
     @GetMapping("/{id}")
     public @ResponseBody Car getOneCar(@PathVariable Long id) {

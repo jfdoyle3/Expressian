@@ -1,17 +1,25 @@
 package com.careerdevs.expressian.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Customer {
 
-    private @Id
-    @GeneratedValue
-    Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     private String carPurchased;
+
+    @ManyToMany
+    @JoinTable(
+            name="store_customer",
+            joinColumns=@JoinColumn(name="customer_id"),
+            inverseJoinColumns = @JoinColumn(name="store_id")
+    )
+    private Set<Store> stores;
+
 
     public Customer(){}
 
@@ -39,9 +47,11 @@ public class Customer {
     public String getCarPurchased() {
         return carPurchased;
     }
-
     public void setCarPurchased(String carPurchased) {
         this.carPurchased = carPurchased;
     }
 
+    public Set<Store> getStores() {
+        return stores;
+    }
 }
