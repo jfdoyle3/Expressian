@@ -4,7 +4,7 @@ package com.careerdevs.expressian.entities;
 import javax.persistence.*;
 import java.util.Set;
 
-//TODO: MANY Cars TO ONE Store
+
 @Entity
 public class Store {
 
