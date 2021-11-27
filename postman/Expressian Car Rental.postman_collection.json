@@ -1,40 +1,60 @@
 {
 	"info": {
-		"_postman_id": "3407d88a-6a55-4fe6-9171-65b31bc69179",
+		"_postman_id": "e77366f1-b2dd-41c3-b533-369e5677060e",
 		"name": "Expressian Car Rental",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Car",
+			"name": "Vehicle",
 			"item": [
 				{
-					"name": "All Cars",
+					"name": "All Vehicles",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/cars",
+							"raw": "localhost:8080/api/vehicles",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"cars"
+								"vehicles"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "a Car",
+					"name": "a Vehicle by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/vehicles/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "a Vehicle",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"brand\":\"Ford\",\r\n    \"name\":\"Pinto\",\r\n    \"type\":\"Hatchback\",\r\n    \"year\": 1972\r\n}",
+							"raw": "{\r\n    \"make\":\"Ford\",\r\n    \"model\":\"Pinto\",\r\n    \"type\":\"Hatchback\",\r\n    \"year\": 1972\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -42,34 +62,63 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/cars",
+							"raw": "localhost:8080/api/vehicles",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"cars"
+								"vehicles"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "a Car by ID",
+					"name": "Update Vehicle",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"make\":\"Ford\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:8080/api/cars/5",
+							"raw": "localhost:8080/api/vehicles/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"cars",
-								"5"
+								"vehicles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "a Vehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/vehicles/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"3"
 							]
 						}
 					},
@@ -206,6 +255,96 @@
 							"path": [
 								"api",
 								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Location",
+			"item": [
+				{
+					"name": "All Locations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/locations",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "a Location",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"location\":\"A1\",\r\n    \"vehicle\":{\r\n        \"id\":1\r\n    },\r\n    \"rented\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/locations",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Location",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/locations",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "a Location",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/locations",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"locations"
 							]
 						}
 					},

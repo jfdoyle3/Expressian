@@ -1,28 +1,29 @@
-package com.careerdevs.expressian.entities;
+package com.careerdevs.expressian.entities.vehicle;
+import com.careerdevs.expressian.entities.location.Location;
 
 import javax.persistence.*;
 
 
 //TODO: MANY Cars TO ONE Store
 @Entity
-public class Car {
+public class Vehicle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String brand;
-    private String name;
+    private String make;
+    private String model;
     private String type;
     private Integer year;
     @OneToOne
     @JoinColumn(name = "location_id")
     private Location location;
 
-    public Car(){}
+    public Vehicle(){}
 
-    public Car(String brand, String name, String type, Integer year, Location location) {
-        this.brand = brand;
-        this.name = name;
+    public Vehicle(String make, String model, String type, Integer year, Location location) {
+        this.make = make;
+        this.model = model;
         this.type = type;
         this.year = year;
         this.location = location;
@@ -36,20 +37,20 @@ public class Car {
         this.id = id;
     }
 
-    public String getBrand() {
-        return brand;
+    public String getMake() {
+        return make;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
+    public void setMake(String make) {
+        this.make = make;
     }
 
-    public String getName() {
-        return name;
+    public String getModel() {
+        return model;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public String getType() {
@@ -67,5 +68,4 @@ public class Car {
     public void setYear(Integer year) {
         this.year = year;
     }
-
 }

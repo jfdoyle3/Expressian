@@ -1,6 +1,6 @@
 package com.careerdevs.expressian.controllers;
 
-import com.careerdevs.expressian.entities.Location;
+import com.careerdevs.expressian.entities.location.Location;
 import com.careerdevs.expressian.repositories.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
