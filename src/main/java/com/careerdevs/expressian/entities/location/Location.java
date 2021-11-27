@@ -1,6 +1,6 @@
 package com.careerdevs.expressian.entities.location;
 
-import com.careerdevs.expressian.entities.Vehicle;
+import com.careerdevs.expressian.entities.vehicle.Vehicle;
 
 import javax.persistence.*;
 

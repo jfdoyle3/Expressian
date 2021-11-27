@@ -31,4 +31,24 @@ public class LocationController {
     public ResponseEntity<Location> createLocation(@RequestBody Location newLocation){
         return new ResponseEntity<>(respository.save(newLocation), HttpStatus.CREATED);
     }
+
+    @PutMapping("/{id}")
+    @ResponseBody
+    public Location updateLocation(@PathVariable Long id,@RequestBody Location updates){
+        Location location=respository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        if(updates.getLocation()!=null) location.setLocation(updates.getLocation());
+        if(updates.getVehicle()!=null) location.setVehicle(updates.getVehicle());
+        if(updates.getRented()!=null) location.setRented(updates.getRented());
+
+        return respository.save(location);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> destroyLocation(@PathVariable Long id){
+        respository.deleteById(id);
+        return new ResponseEntity<>("Deleted",HttpStatus.OK);
+    }
+
+
 }

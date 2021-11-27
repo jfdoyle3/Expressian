@@ -25,7 +25,6 @@ public class VehicleController {
     }
 
 
-
     @GetMapping("/{id}")
     public @ResponseBody
     Vehicle getOneCar(@PathVariable Long id) {

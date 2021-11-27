@@ -1,5 +1,6 @@
 package com.careerdevs.expressian.entities.vehicle;
 import com.careerdevs.expressian.entities.location.Location;
+import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 
 import javax.persistence.*;
 
@@ -15,8 +16,10 @@ public class Vehicle {
     private String model;
     private String type;
     private Integer year;
+
     @OneToOne
     @JoinColumn(name = "location_id")
+    @JsonIncludeProperties("vehicles")
     private Location location;
 
     public Vehicle(){}
@@ -29,9 +32,7 @@ public class Vehicle {
         this.location = location;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() {return id;}
 
     public void setId(Long id) {
         this.id = id;
@@ -41,9 +42,7 @@ public class Vehicle {
         return make;
     }
 
-    public void setMake(String make) {
-        this.make = make;
-    }
+    public void setMake(String make) {this.make = make;}
 
     public String getModel() {
         return model;
