@@ -23,9 +23,9 @@ public class Store {
     )
     private Set<Customer> customers;
 
-    @ManyToOne
-    @JoinColumn(name = "car_id")
-    private Car car;
+//    @ManyToOne
+//    @JoinColumn(name = "car_id")
+//    private Car car;
 
     public Store() {}
 
@@ -67,13 +67,13 @@ public class Store {
         this.email = email;
     }
 
-    public Car getCar() {
-        return car;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
+//    public Car getCar() {
+//        return car;
+//    }
+//
+//    public void setCar(Car car) {
+//        this.car = car;
+//    }
 
     public Set<Customer> getCustomers() {
         return customers;

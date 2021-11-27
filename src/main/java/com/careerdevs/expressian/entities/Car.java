@@ -1,9 +1,6 @@
 package com.careerdevs.expressian.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 //TODO: MANY Cars TO ONE Store
@@ -17,14 +14,18 @@ public class Car {
     private String name;
     private String type;
     private Integer year;
+    @OneToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 
     public Car(){}
 
-    public Car( String brand, String name, String type, Integer year) {
+    public Car(String brand, String name, String type, Integer year, Location location) {
         this.brand = brand;
         this.name = name;
         this.type = type;
         this.year = year;
+        this.location = location;
     }
 
     public Long getId() {

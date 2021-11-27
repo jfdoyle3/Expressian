@@ -37,12 +37,12 @@ public class StoreController {
         return new ResponseEntity<>(repository.save(newStore), HttpStatus.CREATED);
     }
 
-    @PostMapping("/{carId}")
-    public @ResponseBody Store newStore(@PathVariable Long carId, @RequestBody Store newStore) {
-        Car car = carRepository.findById(carId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Car Not Found"));
-        newStore.setCar(car);
-        return repository.save(newStore);
-    }
+//    @PostMapping("/{carId}")
+//    public @ResponseBody Store newStore(@PathVariable Long carId, @RequestBody Store newStore) {
+//        Car car = carRepository.findById(carId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Car Not Found"));
+//        newStore.setCar(car);
+//        return repository.save(newStore);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> destroyCar(@PathVariable Long id) {
