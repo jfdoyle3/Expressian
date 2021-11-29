@@ -19,7 +19,7 @@ public class Vehicle {
 
     @OneToOne
     @JoinColumn(name = "location_id")
-    @JsonIncludeProperties("vehicles")
+    @JsonIncludeProperties("vehicle")
     private Location location;
 
     public Vehicle(){}

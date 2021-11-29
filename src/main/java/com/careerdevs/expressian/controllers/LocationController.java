@@ -2,6 +2,7 @@ package com.careerdevs.expressian.controllers;
 
 import com.careerdevs.expressian.entities.location.Location;
 import com.careerdevs.expressian.repositories.LocationRepository;
+import com.careerdevs.expressian.repositories.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class LocationController {
     @Autowired
     private LocationRepository respository;
 
+    @Autowired
+    private VehicleRepository vehicleRepository;
+
     @GetMapping
     @ResponseBody
     public List<Location> getLocations(){return respository.findAll();}
@@ -26,6 +30,9 @@ public class LocationController {
     public Location getOneLocation(@PathVariable Long id){
         return respository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
+
+    @GetMapping("/rented")
+    public List<Location> availableLocations(){return respository.findAllByRented();}
 
     @PostMapping
     public ResponseEntity<Location> createLocation(@RequestBody Location newLocation){
@@ -43,6 +50,8 @@ public class LocationController {
 
         return respository.save(location);
     }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> destroyLocation(@PathVariable Long id){

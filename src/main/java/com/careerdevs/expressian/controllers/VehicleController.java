@@ -19,17 +19,21 @@ public class VehicleController {
     private VehicleRepository repository;
 
     @GetMapping
-    public @ResponseBody
-    List<Vehicle> getVehicles() {
+    @ResponseBody
+    public List<Vehicle> getVehicles() {
         return repository.findAll();
     }
 
 
     @GetMapping("/{id}")
-    public @ResponseBody
-    Vehicle getOneCar(@PathVariable Long id) {
+    @ResponseBody
+    public Vehicle getOneVehicle(@PathVariable Long id) {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
+
+    @GetMapping("/{make}")
+    @ResponseBody
+    public List<Vehicle> getMakes(@PathVariable String make){ return repository.findAllByMake(make);}
 
 
     @PostMapping
@@ -39,8 +43,8 @@ public class VehicleController {
 
 
     @PutMapping("/{id}")
-    public @ResponseBody
-    Vehicle updateCar(@PathVariable Long id, @RequestBody Vehicle updates) {
+    @ResponseBody
+    public Vehicle updateCar(@PathVariable Long id, @RequestBody Vehicle updates) {
         Vehicle vehicle = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
 
