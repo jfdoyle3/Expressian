@@ -31,8 +31,7 @@ public class LocationController {
         return respository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/rented")
-    public List<Location> availableLocations(){return respository.findAllByRented();}
+
 
     @PostMapping
     public ResponseEntity<Location> createLocation(@RequestBody Location newLocation){
