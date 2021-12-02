@@ -9,6 +9,51 @@
 			"name": "Vehicle",
 			"item": [
 				{
+					"name": "Get Requests",
+					"item": [
+						{
+							"name": "a Vehicle by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/vehicles/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"vehicles",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "by Make",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/vehicles/Ford",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"vehicles",
+										"Ford"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "All Vehicles",
 					"request": {
 						"method": "GET",
@@ -22,26 +67,6 @@
 							"path": [
 								"api",
 								"vehicles"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "a Vehicle by ID",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/api/vehicles/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"api",
-								"vehicles",
-								"1"
 							]
 						}
 					},
@@ -155,7 +180,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"location\":\"A2\",\r\n    \"vehicle\":{\r\n        \"id\":2\r\n    },\r\n    \"rented\":false\r\n}",
+							"raw": "{\r\n    \"location\":\"A7\",\r\n    \"vehicle\":{\r\n        \"id\":2\r\n    },\r\n    \"rented\":false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -181,15 +206,25 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rented\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:8080/api/locations",
+							"raw": "localhost:8080/api/locations/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"locations"
+								"locations",
+								"1"
 							]
 						}
 					},
@@ -201,14 +236,15 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/locations",
+							"raw": "localhost:8080/api/locations/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"locations"
+								"locations",
+								"1"
 							]
 						}
 					},
