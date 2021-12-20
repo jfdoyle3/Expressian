@@ -31,6 +31,21 @@ public class LocationController {
         return respository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/car/{id}")
+    @ResponseBody
+    public void getLocationStatus(@PathVariable Long id){
+        Location vehicle=respository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+       if(vehicle.getVehicle()==null)
+       {System.out.println(vehicle.getVehicle()+" >>>---------------> NULL");
+           System.out.println(vehicle.getRented()+" >>>---------------> RENTED");
+       System.exit(0);}
+            // location.setVehicle(updates.getVehicle());
+        System.out.println(vehicle.getVehicle()+" >>>---------------> VEHICLE OBJECT");
+        System.out.println(vehicle.getRented()+" >>>---------------> RENTED");
+
+
+    }
+
 
 
     @PostMapping
@@ -49,6 +64,8 @@ public class LocationController {
 
         return respository.save(location);
     }
+
+
 
 
 
