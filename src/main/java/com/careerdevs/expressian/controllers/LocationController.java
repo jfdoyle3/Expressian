@@ -31,20 +31,20 @@ public class LocationController {
         return respository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/car/{id}")
-    @ResponseBody
-    public void getLocationStatus(@PathVariable Long id){
-        Location vehicle=respository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
-       if(vehicle.getVehicle()==null)
-       {System.out.println(vehicle.getVehicle()+" >>>---------------> NULL");
-           System.out.println(vehicle.getRented()+" >>>---------------> RENTED");
-       System.exit(0);}
-            // location.setVehicle(updates.getVehicle());
-        System.out.println(vehicle.getVehicle()+" >>>---------------> VEHICLE OBJECT");
-        System.out.println(vehicle.getRented()+" >>>---------------> RENTED");
-
-
-    }
+//    @GetMapping("/car/{id}")
+//    @ResponseBody
+//    public void getLocationStatus(@PathVariable Long id){
+//        Location vehicle=respository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+//       if(vehicle.getVehicle()==null)
+//       {System.out.println(vehicle.getVehicle()+" >>>---------------> NULL");
+//           System.out.println(vehicle.getRented()+" >>>---------------> RENTED");
+//       System.exit(0);}
+//            // location.setVehicle(updates.getVehicle());
+//        System.out.println(vehicle.getVehicle()+" >>>---------------> VEHICLE OBJECT");
+//        System.out.println(vehicle.getRented()+" >>>---------------> RENTED");
+//
+//
+//    }
 
 
 
@@ -53,17 +53,17 @@ public class LocationController {
         return new ResponseEntity<>(respository.save(newLocation), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
-    @ResponseBody
-    public Location updateLocation(@PathVariable Long id,@RequestBody Location updates){
-        Location location=respository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-        if(updates.getLocation()!=null) location.setLocation(updates.getLocation());
-        if(updates.getVehicle()!=null) location.setVehicle(updates.getVehicle());
-        if(updates.getRented()!=null) location.setRented(updates.getRented());
-
-        return respository.save(location);
-    }
+//    @PutMapping("/{id}")
+//    @ResponseBody
+//    public Location updateLocation(@PathVariable Long id,@RequestBody Location updates){
+//        Location location=respository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+//
+//        if(updates.getLocation()!=null) location.setLocation(updates.getLocation());
+//        if(updates.getVehicle()!=null) location.setVehicle(updates.getVehicle());
+//        if(updates.getRented()!=null) location.setRented(updates.getRented());
+//
+//        return respository.save(location);
+//    }
 
 
 

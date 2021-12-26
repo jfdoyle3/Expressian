@@ -1,5 +1,6 @@
 package com.careerdevs.expressian.entities.location;
 
+
 import com.careerdevs.expressian.entities.vehicle.Vehicle;
 
 import javax.persistence.*;
@@ -12,19 +13,19 @@ public class Location {
     private Long id;
     private String location;
 
-    @OneToOne
-    @JoinColumn(name = "vehicle_id")
-    private Vehicle vehicle;
-
     @Column(name="rented")
     private Boolean isRented;
 
+    @OneToOne
+    private Vehicle vehicle;
+
     public Location() {}
 
-    public Location(String location, Vehicle vehicle, Boolean isRented) {
+    public Location(String location, Boolean isRented,Vehicle vehicle) {
         this.location = location;
-        this.vehicle = vehicle;
         this.isRented = isRented;
+        this.vehicle=vehicle;
+
     }
 
     public Long getId() {
@@ -43,13 +44,6 @@ public class Location {
         this.location = location;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
 
     public Boolean getRented() {
         return isRented;
@@ -59,4 +53,11 @@ public class Location {
         isRented = rented;
     }
 
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 }

@@ -17,19 +17,14 @@ public class Vehicle {
     private String type;
     private Integer year;
 
-    @OneToOne
-    @JoinColumn(name = "location_id")
-    @JsonIncludeProperties("vehicle")
-    private Location location;
 
     public Vehicle(){}
 
-    public Vehicle(String make, String model, String type, Integer year, Location location) {
+    public Vehicle(String make, String model, String type, Integer year) {
         this.make = make;
         this.model = model;
         this.type = type;
         this.year = year;
-        this.location = location;
     }
 
     public Long getId() {return id;}
@@ -67,4 +62,5 @@ public class Vehicle {
     public void setYear(Integer year) {
         this.year = year;
     }
+
 }
