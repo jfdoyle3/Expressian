@@ -1,6 +1,7 @@
 package com.careerdevs.expressian.entities.store;
 
 
+import com.careerdevs.expressian.entities.customer.Customer;
 import com.careerdevs.expressian.entities.vehicle.Vehicle;
 
 import javax.persistence.*;
@@ -19,8 +20,11 @@ public class Store {
 
 
     @OneToMany(fetch = FetchType.LAZY)
-  //  @JsonIncludeProperties("developer")
-    private Set<Vehicle> vehicle;
+  //  @JsonIncludeProperties("?")
+    private Set<Vehicle> vehicles;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Set<Customer> customers;
 
     public Store() {}
 
@@ -62,11 +66,19 @@ public class Store {
         this.email = email;
     }
 
-    public Set<Vehicle> getVehicle() {
-        return vehicle;
+    public Set<Vehicle> getVehicles() {
+        return vehicles;
     }
 
-    public void setVehicle(Set<Vehicle> vehicle) {
-        this.vehicle = vehicle;
+    public void setVehicles(Set<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    public Set<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(Set<Customer> customers) {
+        this.customers = customers;
     }
 }
