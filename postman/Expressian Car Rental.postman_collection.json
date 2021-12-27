@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e77366f1-b2dd-41c3-b533-369e5677060e",
+		"_postman_id": "5aed0d23-0a6c-4895-99b5-919692204efd",
 		"name": "Expressian Car Rental",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -180,7 +180,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"location\":\"A7\",\r\n    \"vehicle\":{\r\n        \"id\":2\r\n    },\r\n    \"rented\":false\r\n}",
+							"raw": "{\r\n    \"location\":\"A2\",\r\n    \"rented\":false,\r\n    \"vehicle\":{\r\n        \"id\":1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -208,7 +208,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"rented\":true\r\n}",
+							"raw": "{\r\n   \"vehicle\":{\r\n       \"id\":1\r\n   }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -281,7 +281,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"test\"\r\n}",
+							"raw": "{\r\n    \"name\":\"Joe's Garage\",\r\n    \"address\":\"1212 Smith Ave\",\r\n    \"email\":\"z@z.com\",\r\n    \"vehicle\":[{\r\n        \"id\": 1\r\n    }]\r\n    \r\n    \r\n    \r\n    \r\n\r\n        \r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -316,6 +316,26 @@
 								}
 							}
 						},
+						"url": {
+							"raw": "localhost:8080/api/stores/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"stores",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Store",
+					"request": {
+						"method": "DELETE",
+						"header": [],
 						"url": {
 							"raw": "localhost:8080/api/stores/1",
 							"host": [
@@ -381,6 +401,150 @@
 							"path": [
 								"api",
 								"customers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Sign Up/In",
+					"item": [
+						{
+							"name": "Sign In",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"abcd@efgh.com\",\r\n    \"password\":\"123456789\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/auth/signin",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign Up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"abcd@efgh.com\",\r\n    \"password\":\"123456789\",\r\n    \"roles\":\"mod\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/api/auth/signup",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Test Roles",
+					"item": [
+						{
+							"name": "Test User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/test/user",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"test",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Moderator",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/test/mod",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"test",
+										"mod"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Admin",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Test Public",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/test/public",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"test",
+								"public"
 							]
 						}
 					},
