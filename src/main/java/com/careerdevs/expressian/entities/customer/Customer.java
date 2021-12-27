@@ -1,10 +1,8 @@
 package com.careerdevs.expressian.entities.customer;
 
-import com.careerdevs.expressian.entities.store.Store;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
-import java.util.Set;
+
 
 @Entity
 public class Customer {

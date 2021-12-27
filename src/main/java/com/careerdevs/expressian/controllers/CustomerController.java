@@ -48,7 +48,6 @@ public class CustomerController {
         Customer customer = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         if (updates.getName() != null) customer.setName(updates.getName());
-        if (updates.getStores()!=null) customer.setStores((updates.getStores()));
 
         return repository.save(customer);
     }
