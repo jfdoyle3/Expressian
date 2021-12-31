@@ -1,11 +1,9 @@
 package com.careerdevs.expressian.entities.vehicle;
-import com.careerdevs.expressian.entities.location.Location;
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
+
 
 import javax.persistence.*;
 
 
-//TODO: MANY Cars TO ONE Store
 @Entity
 public class Vehicle {
 

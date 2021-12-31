@@ -31,20 +31,20 @@ public class VehicleController {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/{make}")
-    @ResponseBody
-    public List<Vehicle> getMakes(@PathVariable String make){ return repository.findAllByMake(make);}
+//    @GetMapping("/{make}")
+//    @ResponseBody
+//    public List<Vehicle> getMakes(@PathVariable String make){ return repository.findAllByMake(make);}
 
 
     @PostMapping
-    public ResponseEntity<Vehicle> createCar(@RequestBody Vehicle newVehicle) {
+    public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle newVehicle) {
         return new ResponseEntity<>(repository.save(newVehicle), HttpStatus.CREATED);
     }
 
 
     @PutMapping("/{id}")
     @ResponseBody
-    public Vehicle updateCar(@PathVariable Long id, @RequestBody Vehicle updates) {
+    public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle updates) {
         Vehicle vehicle = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
 
@@ -56,7 +56,7 @@ public class VehicleController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> destroyCar(@PathVariable Long id) {
+    public ResponseEntity<String> destroyVehicle(@PathVariable Long id) {
         repository.deleteById(id);
         return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
