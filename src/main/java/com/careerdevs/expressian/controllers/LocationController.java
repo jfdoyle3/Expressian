@@ -17,35 +17,35 @@ import java.util.List;
 public class LocationController {
 
     @Autowired
-    private LocationRepository respository;
+    private LocationRepository repository;
 
     @Autowired
     private VehicleRepository vehicleRepository;
 
     @GetMapping
     @ResponseBody
-    public List<Location> getLocations(){return respository.findAll();}
+    public List<Location> getLocations(){return repository.findAll();}
 
     @GetMapping("/{id}")
     public Location getOneLocation(@PathVariable Long id){
-        return respository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return repository.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
     public ResponseEntity<Location> createLocation(@RequestBody Location newLocation){
-        return new ResponseEntity<>(respository.save(newLocation), HttpStatus.CREATED);
+        return new ResponseEntity<>(repository.save(newLocation), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     @ResponseBody
     public Location updateLocation(@PathVariable Long id,@RequestBody Location updates){
-        Location location=respository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Location location=repository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         if(updates.getLocation()!=null) location.setLocation(updates.getLocation());
         if(updates.getVehicle()!=null) location.setVehicle(updates.getVehicle());
         if(updates.getRented()!=null) location.setRented(updates.getRented());
 
-        return respository.save(location);
+        return repository.save(location);
     }
 
 
@@ -54,7 +54,7 @@ public class LocationController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> destroyLocation(@PathVariable Long id){
-        respository.deleteById(id);
+        repository.deleteById(id);
         return new ResponseEntity<>("Deleted",HttpStatus.OK);
     }
 
