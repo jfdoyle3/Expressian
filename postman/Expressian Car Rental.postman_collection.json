@@ -281,7 +281,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Joe's Garage\",\r\n    \"address\":\"1212 Smith Ave\",\r\n    \"email\":\"z@z.com\",\r\n    \"vehicle\":[{\r\n        \"id\": 1\r\n    }]\r\n    \r\n    \r\n    \r\n    \r\n\r\n        \r\n    \r\n}",
+							"raw": "{\r\n    \"name\":\"Joe's Garage\",\r\n    \"address\":\"1212 Smith Ave\",\r\n    \"email\":\"z@z.com\",\r\n    \"vehicles\":[{\r\n        \"id\": 1\r\n    }],\r\n    \"customers\":[{\r\n        \"id\":1\r\n    }]\r\n    \r\n    \r\n    \r\n    \r\n\r\n        \r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -361,22 +361,31 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jim\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:8080/api/customers",
+							"raw": "localhost:8080/api/customer",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"customers"
+								"customer"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "a Customer",
+					"name": "Customers",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -393,14 +402,34 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/customers",
+							"raw": "localhost:8080/api/customer",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"customers"
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customer",
+								"1"
 							]
 						}
 					},
@@ -545,6 +574,58 @@
 								"api",
 								"test",
 								"public"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rental Agreement",
+			"item": [
+				{
+					"name": "Agreements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/rental",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rental"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agreements",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer\":{\r\n        \"id\":1\r\n    },\r\n    \"vehicle\":{\r\n        \"id\":1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/rental",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"rental"
 							]
 						}
 					},
