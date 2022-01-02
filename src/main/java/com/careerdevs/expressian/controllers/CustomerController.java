@@ -19,8 +19,8 @@ public class CustomerController {
     private CustomerRepository repository;
 
     @GetMapping
-    public @ResponseBody
-    List<Customer> getCustomer() {
+     @ResponseBody
+    public List<Customer> getCustomer() {
         return repository.findAll();
     }
 
@@ -30,8 +30,8 @@ public class CustomerController {
 //    }
 
     @GetMapping("/{id}")
-    public @ResponseBody
-    Customer getOneCustomer(@PathVariable Long id) {
+    @ResponseBody
+    public Customer getOneCustomer(@PathVariable Long id) {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
@@ -47,7 +47,7 @@ public class CustomerController {
     Customer updateCustomer(@PathVariable Long id, @RequestBody Customer updates) {
         Customer customer = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        if (updates.getName() != null) customer.setName(updates.getName());
+        if (updates.getCustomerName() != null) customer.setCustomerName(updates.getCustomerName());
 
         return repository.save(customer);
     }
