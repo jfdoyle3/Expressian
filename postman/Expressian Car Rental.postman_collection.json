@@ -363,7 +363,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"Jim\"\r\n}",
+							"raw": "{\r\n    \"customerName\":\"Jim\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

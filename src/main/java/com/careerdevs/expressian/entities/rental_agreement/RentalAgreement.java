@@ -20,8 +20,7 @@ public class RentalAgreement {
     @ManyToOne
     private Vehicle vehicle;
 
-    public RentalAgreement() {
-    }
+    public RentalAgreement() {}
 
 
     public RentalAgreement(Long id, Customer customer, Vehicle vehicle) {
