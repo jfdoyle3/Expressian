@@ -1,15 +1,11 @@
 package com.careerdevs.expressian.entities.rental_agreement;
 
-
 import com.careerdevs.expressian.entities.customer.Customer;
 import com.careerdevs.expressian.entities.vehicle.Vehicle;
 
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 @Entity
 public class RentalAgreement {
@@ -18,17 +14,17 @@ public class RentalAgreement {
     @GeneratedValue
     private Long id;
 
-    @ManyToMany
-    private Set<Customer> customer;
+    @ManyToOne
+    private Customer customer;
 
-    @ManyToMany
-    private Set<Vehicle> vehicle;
+    @ManyToOne
+    private Vehicle vehicle;
 
     public RentalAgreement() {
     }
 
 
-    public RentalAgreement(Long id, Set<Customer> customer, Set<Vehicle> vehicle) {
+    public RentalAgreement(Long id, Customer customer, Vehicle vehicle) {
         this.id = id;
         this.customer = customer;
         this.vehicle = vehicle;
@@ -45,22 +41,22 @@ public class RentalAgreement {
     }
 
 
-    public Set<Customer> getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
 
 
-    public void setCustomer(Set<Customer> customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
 
 
-    public Set<Vehicle> getVehicle() {
+    public Vehicle getVehicle() {
         return vehicle;
     }
 
 
-    public void setVehicle(Set<Vehicle> vehicle) {
+    public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 

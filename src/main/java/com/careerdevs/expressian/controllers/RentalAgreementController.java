@@ -1,7 +1,5 @@
 package com.careerdevs.expressian.controllers;
 
-
-import com.careerdevs.expressian.entities.location.Location;
 import com.careerdevs.expressian.entities.rental_agreement.RentalAgreement;
 import com.careerdevs.expressian.repositories.RentalAgreementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
