@@ -5,6 +5,7 @@ import com.careerdevs.expressian.repositories.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,6 +21,7 @@ public class VehicleController {
 
     @GetMapping
     @ResponseBody
+    @PreAuthorize("hasRole('Customer')")
     public List<Vehicle> getVehicles() {
         return repository.findAll();
     }
@@ -27,6 +29,7 @@ public class VehicleController {
 
     @GetMapping("/{id}")
     @ResponseBody
+
     public Vehicle getOneVehicle(@PathVariable Long id) {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
