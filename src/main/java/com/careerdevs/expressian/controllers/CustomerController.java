@@ -2,9 +2,11 @@ package com.careerdevs.expressian.controllers;
 
 import com.careerdevs.expressian.entities.customer.Customer;
 import com.careerdevs.expressian.repositories.CustomerRepository;
+import com.careerdevs.expressian.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -18,8 +20,13 @@ public class CustomerController {
     @Autowired
     private CustomerRepository repository;
 
+    @Autowired
+    private UserService userService;
+
+
     @GetMapping
-     @ResponseBody
+    @ResponseBody
+    @PreAuthorize("hasRole('CUSTOMER')")
     public List<Customer> getCustomer() {
         return repository.findAll();
     }
