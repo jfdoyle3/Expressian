@@ -25,7 +25,6 @@ public class VehicleController {
 
     @GetMapping
     @ResponseBody
-    @PreAuthorize("hasRole('Customer')")
     public List<Vehicle> getVehicles() {
         return repository.findAll();
     }
@@ -44,6 +43,7 @@ public class VehicleController {
 
 
     @PostMapping
+    @PreAuthorize("hasRole('EMPLOYEE')")
     public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle newVehicle) {
         return new ResponseEntity<>(repository.save(newVehicle), HttpStatus.CREATED);
     }

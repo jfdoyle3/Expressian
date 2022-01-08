@@ -1,5 +1,6 @@
 package com.careerdevs.expressian.controllers;
 
+import com.careerdevs.expressian.entities.auth.User;
 import com.careerdevs.expressian.entities.customer.Customer;
 import com.careerdevs.expressian.repositories.CustomerRepository;
 import com.careerdevs.expressian.services.UserService;
@@ -26,7 +27,7 @@ public class CustomerController {
 
     @GetMapping
     @ResponseBody
-    @PreAuthorize("hasRole('CUSTOMER')")
+//    @PreAuthorize("hasRole('CUSTOMER')")
     public List<Customer> getCustomer() {
         return repository.findAll();
     }
@@ -45,6 +46,12 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer newCustomer) {
+        User currentUser=userService.getCurrentUser();
+
+        if (currentUser == null) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+        newCustomer.setUser(currentUser);
         return new ResponseEntity<>(repository.save(newCustomer), HttpStatus.CREATED);
     }
 
