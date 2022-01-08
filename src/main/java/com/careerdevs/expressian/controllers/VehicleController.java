@@ -2,6 +2,7 @@ package com.careerdevs.expressian.controllers;
 
 import com.careerdevs.expressian.entities.vehicle.Vehicle;
 import com.careerdevs.expressian.repositories.VehicleRepository;
+import com.careerdevs.expressian.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ public class VehicleController {
 
     @Autowired
     private VehicleRepository repository;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     @ResponseBody
