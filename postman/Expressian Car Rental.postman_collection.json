@@ -56,6 +56,16 @@
 				{
 					"name": "All Vehicles",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -507,12 +517,22 @@
 					"name": "Test Roles",
 					"item": [
 						{
-							"name": "Test User",
+							"name": "Test Customer",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmNkQGVmZ2guY29tIiwiaWF0IjoxNjQxNTEzMjA1fQ.2bscK7jH46jegGiXE-ByFwpqgQ_GdNpXlLyBWqmR_XBQ1qURdEXXpAQUBH8_J8aXRJtWY7Z8vNgNuy7XyHbfmg",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/test/user",
+									"raw": "localhost:8080/api/test/customer",
 									"host": [
 										"localhost"
 									],
@@ -520,19 +540,19 @@
 									"path": [
 										"api",
 										"test",
-										"user"
+										"customer"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "Test Moderator",
+							"name": "Test Employee",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/test/mod",
+									"raw": "localhost:8080/api/test/employee",
 									"host": [
 										"localhost"
 									],
@@ -540,7 +560,7 @@
 									"path": [
 										"api",
 										"test",
-										"mod"
+										"employee"
 									]
 								}
 							},
@@ -552,7 +572,16 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": ""
+									"raw": "localhost:8080/api/test/admin",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"test",
+										"admin"
+									]
 								}
 							},
 							"response": []
