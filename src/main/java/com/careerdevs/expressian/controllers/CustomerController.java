@@ -27,7 +27,6 @@ public class CustomerController {
 
     @GetMapping
     @ResponseBody
-//    @PreAuthorize("hasRole('CUSTOMER')")
     public List<Customer> getCustomer() {
         return repository.findAll();
     }
