@@ -50,18 +50,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
-    @Override
+    @Override  
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll().and()
-                .authorizeRequests().antMatchers("/api/test/**").permitAll().and()
-                .authorizeRequests().antMatchers("/api/customers/**").hasAnyAuthority("ROLE_CUSTOMER","ROLE_EMPLOYEE","ROLE_ADMIN").and()
-                .authorizeRequests().antMatchers("/api/vehicles/**").hasAnyAuthority("ROLE_EMPLOYEE","ROLE_ADMIN")
+                .authorizeRequests().antMatchers("/api/auth/**",
+                                                            "/api/test/**").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/api/customers/create",  // Add Self: Update,Delete
+                                                            "/api/vehicles/available",
+                                                            "/api/rentals/create").hasAnyAuthority("CUSTOMER")
+                .and()
+                .authorizeRequests().antMatchers("/api/vehicles/**",
+                                                            "/api/customers/**",
+                                                            "api/rentals/**",
+                                                            "/api/locations/**").hasAnyAuthority("EMPLOYEE","ADMIN")
+                .and()
+                .authorizeRequests().antMatchers("/api/store/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
-
-
 }

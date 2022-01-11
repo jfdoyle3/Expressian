@@ -22,7 +22,7 @@ public class RentalAgreementController {
     @ResponseBody
     public List<RentalAgreement> getRentalAgreements(){return repository.findAll();}
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<RentalAgreement> createRentalAgreement(@RequestBody RentalAgreement newRentalAgreement){
         return new ResponseEntity<>(repository.save(newRentalAgreement), HttpStatus.CREATED);
     }

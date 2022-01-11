@@ -23,7 +23,7 @@ public class VehicleController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("/available")
     @ResponseBody
     public List<Vehicle> getVehicles() {
         return repository.findAll();
@@ -32,7 +32,6 @@ public class VehicleController {
 
     @GetMapping("/{id}")
     @ResponseBody
-
     public Vehicle getOneVehicle(@PathVariable Long id) {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
@@ -42,7 +41,7 @@ public class VehicleController {
 //    public List<Vehicle> getMakes(@PathVariable String make){ return repository.findAllByMake(make);}
 
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Vehicle> createVehicle(@RequestBody Vehicle newVehicle) {
         return new ResponseEntity<>(repository.save(newVehicle), HttpStatus.CREATED);
     }

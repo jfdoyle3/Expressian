@@ -373,7 +373,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"customerName\":\"Jim\"\r\n}",
+							"raw": "{\r\n    \"customerName\":\"sam\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -381,14 +381,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/customer",
+							"raw": "localhost:8080/api/customers",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"customer"
+								"customers"
 							]
 						}
 					},
@@ -400,6 +400,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmNkQGVmZ2guY29tIiwiaWF0IjoxNjQxNjIxMTE1fQ._yyXYHJTmMcHAyr0CzxdZBY9MhmFiVt1qEwZrHxRaORagd1eOioXvxK7a-eLZJHpjQZsOYOv3DdNLPYAcdHHhA",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -412,14 +422,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8080/api/customer",
+							"raw": "localhost:8080/api/customers",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"customer"
+								"customers"
 							]
 						}
 					},
@@ -439,6 +449,77 @@
 							"path": [
 								"api",
 								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Self",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYUBlZmdoLmNvbSIsImlhdCI6MTY0MTg1NDQwMX0.8cS0z9J7wLZEGvjU1-OfDx3SntU4abME3d1L27yRG62CKFom6UEejz8ADRlRnH7qIi2cITTK_AbhvMyTUWHb_g",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/customers/self",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"self"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Self",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/customers/remove/self",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"remove",
+								"self"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/customers/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
 								"1"
 							]
 						}
@@ -489,7 +570,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"username\": \"abcd@efgh.com\",\r\n    \"password\":\"123456789\",\r\n    \"roles\":\"mod\"\r\n    \r\n}",
+									"raw": "{\r\n    \"username\": \"aa@efgh.com\",\r\n    \"password\":\"123456789\",\r\n    \"roles\":[\r\n        \"employee\"\r\n    ]\r\n    \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -603,6 +684,25 @@
 								"api",
 								"test",
 								"public"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth"
 							]
 						}
 					},

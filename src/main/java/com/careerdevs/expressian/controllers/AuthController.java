@@ -46,6 +46,9 @@ public class AuthController {
     @Autowired
     private JwtUtils jwtUtils;
 
+    @GetMapping
+    public List<User> getAllUsers(){return userRepository.findAll();}
+
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -79,24 +82,24 @@ public class AuthController {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role customerRole = roleRepository.findByName(ERole.ROLE_CUSTOMER).orElseThrow(() -> new RuntimeException("Error: Customer Role is not found"));
+            Role customerRole = roleRepository.findByName(ERole.CUSTOMER).orElseThrow(() -> new RuntimeException("Error: Customer Role is not found"));
             roles.add(customerRole);
         } else {
             strRoles.forEach(role -> {
                 switch(role) {
                     case "admin":
                     case "administrator":
-                        Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN).orElseThrow(() -> new RuntimeException("Error:Admin Role is not found"));
+                        Role adminRole = roleRepository.findByName(ERole.ADMIN).orElseThrow(() -> new RuntimeException("Error:Admin Role is not found"));
                         roles.add(adminRole);
 
                         break;
                     case "employee":
-                        Role employeeRole = roleRepository.findByName(ERole.ROLE_EMPLOYEE).orElseThrow(() -> new RuntimeException("Error: Employee Role is not found"));
+                        Role employeeRole = roleRepository.findByName(ERole.EMPLOYEE).orElseThrow(() -> new RuntimeException("Error: Employee Role is not found"));
                         roles.add(employeeRole);
 
                         break;
                     default:
-                        Role customerRole = roleRepository.findByName(ERole.ROLE_CUSTOMER).orElseThrow(() -> new RuntimeException("Error: Customer Role is not found"));
+                        Role customerRole = roleRepository.findByName(ERole.CUSTOMER).orElseThrow(() -> new RuntimeException("Error: Customer Role is not found"));
                         roles.add(customerRole);
 
                         break;

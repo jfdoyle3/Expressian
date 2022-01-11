@@ -42,8 +42,18 @@ public class CustomerController {
         return repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/self")
+    public @ResponseBody Customer getSelf() {
+        User currentUser = userService.getCurrentUser();
 
-    @PostMapping
+        if (currentUser == null) {
+            return null;
+        }
+        return repository.findByUser_id(currentUser.getId()).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+
+    @PostMapping("/create")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer newCustomer) {
         User currentUser=userService.getCurrentUser();
 
@@ -65,9 +75,21 @@ public class CustomerController {
         return repository.save(customer);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> destroyCar(@PathVariable Long id) {
+    @DeleteMapping("/{id")
+    public ResponseEntity<String> destroyCustomer(@PathVariable Long id) {
         repository.deleteById(id);
+        return new ResponseEntity<>("Deleted", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/remove/self")
+    @ResponseBody
+    public ResponseEntity<String> deleteSelf() {
+        User currentUser = userService.getCurrentUser();
+
+        if (currentUser == null) {
+            return null;
+        }
+        repository.deleteById(currentUser.getId());
         return new ResponseEntity<>("Deleted", HttpStatus.OK);
     }
 
