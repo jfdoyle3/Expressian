@@ -22,7 +22,7 @@ public class StoreController {
     @Autowired
     private VehicleRepository vehicleRepository;
 
-    @GetMapping
+    @GetMapping("/locations")
     @ResponseBody
     public List<Store> getStores() {
         return repository.findAll();

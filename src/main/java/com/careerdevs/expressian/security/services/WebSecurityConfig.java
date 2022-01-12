@@ -56,16 +56,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**",
-                                                            "/api/test/**").permitAll()
+                                                 "/api/test/**").permitAll()
                 .and()
                 .authorizeRequests().antMatchers("/api/customers/create",  // Add Self: Update,Delete
-                                                            "/api/vehicles/available",
-                                                            "/api/rentals/create").hasAnyAuthority("CUSTOMER")
+                                                 "/api/vehicles/available",
+                                                 "/api/rentals/create").hasAnyAuthority("CUSTOMER")
+                .and()
+                .authorizeRequests().antMatchers("/api/store/locations").hasAnyAuthority("CUSTOMER","EMPLOYEE")
                 .and()
                 .authorizeRequests().antMatchers("/api/vehicles/**",
-                                                            "/api/customers/**",
-                                                            "api/rentals/**",
-                                                            "/api/locations/**").hasAnyAuthority("EMPLOYEE","ADMIN")
+                                                 "/api/customers/**",
+                                                 "api/rentals/**",
+                                                 "/api/locations/**").hasAnyAuthority("EMPLOYEE","ADMIN")
                 .and()
                 .authorizeRequests().antMatchers("/api/store/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();
