@@ -58,7 +58,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/api/auth/**",
                                                  "/api/test/**").permitAll()
                 .and()
-                .authorizeRequests().antMatchers("/api/customers/create",  // Add Self: Update,Delete
+                .authorizeRequests().antMatchers("/api/customers/create",
+                                                 "/api/customers/self",    // Add Self: Update,Delete
                                                  "/api/vehicles/available",
                                                  "/api/rentals/create").hasAnyAuthority("CUSTOMER")
                 .and()
