@@ -8,6 +8,7 @@ import com.careerdevs.expressian.repositories.RoleRepository;
 import com.careerdevs.expressian.repositories.UserRepository;
 import com.careerdevs.expressian.security.jwt.JwtUtils;
 import com.careerdevs.expressian.security.services.UserDetailsImpl;
+import com.careerdevs.expressian.services.DataBaseService;
 import com.example.springjwtauth.payloads.request.LoginRequest;
 import com.example.springjwtauth.payloads.request.SignupRequest;
 import com.example.springjwtauth.payloads.response.JwtResponse;
@@ -20,6 +21,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -45,6 +47,9 @@ public class AuthController {
 
     @Autowired
     private JwtUtils jwtUtils;
+
+   @Autowired
+    private DataBaseService dataBaseService;
 
     @GetMapping
     public List<User> getAllUsers(){return userRepository.findAll();}
@@ -80,6 +85,11 @@ public class AuthController {
         User user = new User(signupRequest.getUsername(), encoder.encode(signupRequest.getPassword()));
         Set<String> strRoles = signupRequest.getRoles();
         Set<Role> roles = new HashSet<>();
+
+       if(!dataBaseService.rolesExists()){
+           dataBaseService.writeRoles();
+       }
+
 
         if (strRoles == null) {
             Role customerRole = roleRepository.findByName(ERole.CUSTOMER).orElseThrow(() -> new RuntimeException("Error: Customer Role is not found"));
