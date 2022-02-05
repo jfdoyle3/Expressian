@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ExpressianApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExpressianApplication.class, args);
+
+		DataBaseWriter.writeToDatabase();
+		// SpringApplication.run(ExpressianApplication.class, args);
 	}
 
 }

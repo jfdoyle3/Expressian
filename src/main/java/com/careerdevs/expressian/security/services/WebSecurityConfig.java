@@ -57,11 +57,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers("/api/auth/**",
                                                  "/api/test/**").permitAll()
-                .and()
-                .authorizeRequests().antMatchers("/api/customers/create",
-                                                 "/api/customers/self",    // Add Self: Update,Delete
-                                                 "/api/vehicles/available",
-                                                 "/api/rentals/create").hasAnyAuthority("CUSTOMER")
+//                .and()
+//                .authorizeRequests().antMatchers("/api/customers/create",
+//                                                 "/api/customers/self",
+//                                                 "/api/customer/remove/self",
+//                                                 "api/customer/update/self",
+//                                                 "/api/vehicles/available",
+//                                                 "/api/rentals/create").hasAnyAuthority("CUSTOMER")
                 .and()
                 .authorizeRequests().antMatchers("/api/store/locations").hasAnyAuthority("CUSTOMER","EMPLOYEE")
                 .and()
