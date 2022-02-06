@@ -13,8 +13,10 @@ public class DataBaseService {
     public boolean rolesExists() {
         int count = 0;
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/expressian",
-                    "username", "password");
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/expressian",
+                    "username",
+                    "password");
 
             Statement statement = connection.createStatement();
 
@@ -28,7 +30,6 @@ public class DataBaseService {
             if (connection != null) {
                 connection.close();
             }
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,8 +46,10 @@ public class DataBaseService {
         int id = 0;
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/expressian",
-                    "username", "password");
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/expressian",
+                    "username",
+                    "password");
 
 
             String sql = "INSERT INTO role (id, name) values (?,?)";
@@ -67,47 +70,29 @@ public class DataBaseService {
         }
     }
 
-
     // Detects Table Exists
     private void tableExists(String databaseName, String tableName) {
 
-
-
-
         try {
 
-
-
-
-
-
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/expressian",
-                    "username", "password");
-
-
-            System.out.println("Opening Connection/nChecking if Table exists");
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/expressian",
+                    "username",
+                    "password");
 
             DatabaseMetaData dbm = connection.getMetaData();
 
             ResultSet rs = dbm.getTables(null, databaseName, tableName, null);
 
+            if (rs.next())
+                System.out.printf("Table %s exists in %s",tableName,databaseName);
 
-            if (!rs.next()) {
-                // If Table doesn't exist then....  do something
-                System.out.println("Create Table here");
-//                PreparedStatement create = connection.prepareStatement("create table role(name varchar(33))");
-//                create.executeUpdate();
-            } else {
-                System.out.println("already exists");
+            if (connection != null)
+               connection.close();
+
+            } catch(SQLException e){
+                e.printStackTrace();
             }
 
-            if (connection != null) {
-                System.out.println("Closing Connection");
-                connection.close();
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
-}
