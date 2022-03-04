@@ -1,4 +1,4 @@
-package com.example.springjwtauth.payloads.response;
+package com.careerdevs.expressian.payloads.response;
 
 import java.util.List;
 

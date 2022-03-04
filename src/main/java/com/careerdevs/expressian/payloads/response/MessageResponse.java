@@ -1,4 +1,4 @@
-package com.example.springjwtauth.payloads.response;
+package com.careerdevs.expressian.payloads.response;
 
 public class MessageResponse {
     private String message;

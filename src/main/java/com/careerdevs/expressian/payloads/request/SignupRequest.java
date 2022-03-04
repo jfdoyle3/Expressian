@@ -1,4 +1,4 @@
-package com.example.springjwtauth.payloads.request;
+package com.careerdevs.expressian.payloads.request;
 
 import java.util.Set;
 

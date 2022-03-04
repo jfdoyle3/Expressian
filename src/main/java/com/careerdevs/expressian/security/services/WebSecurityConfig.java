@@ -58,22 +58,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests().antMatchers("/api/auth/**",
                                                  "/api/test/**").permitAll()
-//                .and()
-//                .authorizeRequests().antMatchers("/api/customers/create",
-//                                                 "/api/customers/self",
-//                                                 "/api/customer/remove/self",
-//                                                 "api/customer/update/self",
-//                                                 "/api/vehicles/available",
-//                                                 "/api/rentals/create").hasAnyAuthority("CUSTOMER")
-//                .and()
-//                .authorizeRequests().antMatchers("/api/store/locations").hasAnyAuthority("CUSTOMER","EMPLOYEE")
-//                .and()
-//                .authorizeRequests().antMatchers("/api/vehicles/**",
-//                                                 "/api/customers/**",
-//                                                 "api/rentals/**",
-//                                                 "/api/locations/**").hasAnyAuthority("EMPLOYEE","ADMIN")
-//                .and()
-//                .authorizeRequests().antMatchers("/api/store/**").hasAnyAuthority("ADMIN")
+                .and()
+                .authorizeRequests().antMatchers("/api/customers/create",
+                                                 "/api/customers/self",
+                                                 "/api/customer/remove/self",
+                                                 "api/customer/update/self",
+                                                 "/api/vehicles/available",
+                                                 "/api/rentals/create").hasAnyAuthority("CUSTOMER")
+                .and()
+                .authorizeRequests().antMatchers("/api/store/locations").hasAnyAuthority("CUSTOMER","EMPLOYEE")
+                .and()
+                .authorizeRequests().antMatchers("/api/vehicles/**",
+                                                 "/api/customers/**",
+                                                 "api/rentals/**",
+                                                 "/api/locations/**").hasAnyAuthority("EMPLOYEE","ADMIN")
+                .and()
+                .authorizeRequests().antMatchers("/api/store/**").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
